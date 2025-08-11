@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import MainLayout from "./layouts/MainLayout";
+import Dashboard from "./pages/Dashboard";
+import Forms from "./pages/Forms";
+import Tables from "./pages/Tables";
+import SettingsProfile from "./pages/SettingsProfile";
+import SettingsSecurity from "./pages/SettingsSecurity";
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <MainLayout>
+      <Routes>
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/forms" element={<Forms />} />
+        <Route path="/tables" element={<Tables />} />
+        <Route path="/settings/profile" element={<SettingsProfile />} />
+        <Route path="/settings/security" element={<SettingsSecurity />} />
+        <Route path="*" element={<div className="p-6">Page not found</div>} />
+      </Routes>
+    </MainLayout>
   );
 }
-
-export default App;
